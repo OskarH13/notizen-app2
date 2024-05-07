@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { Note } from "../types/notes.type";
-import { BASE_URL } from "../config";
+import { BASE_URL, userName } from "../config";
 
 type Props = {
     notes: Note[],
@@ -30,7 +30,7 @@ function CreateNote(props: Props) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Galina'
+                'Authorization': userName
             },
             body: JSON.stringify({ title, content, user, categories })
         })
@@ -49,7 +49,7 @@ function CreateNote(props: Props) {
                         <Form.Control type="text" placeholder="Gebe den Titel ein" ref={titleRef} />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Inhalte</Form.Label>
+                        <Form.Label>Inhalt</Form.Label>
                         <Form.Control as="textarea" placeholder="Gebe die Notiz ein" rows={5} ref={contentRef} />
                     </Form.Group>
                     <Form.Group className="mb-3">
